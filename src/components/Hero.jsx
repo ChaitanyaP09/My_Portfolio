@@ -38,7 +38,7 @@ const Hero = () => {
             <motion.a 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="/Actual_Resume_one.pdf" 
+              href="/My_resume.pdf" 
               target="_blank" 
               rel="noopener noreferrer"
               className="px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg shadow-blue-500/30 shadow-lg"
