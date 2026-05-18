@@ -1,133 +1,61 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { FaLinkedin, FaGithub, FaHeart } from "react-icons/fa";
-import { HiOutlineMail } from "react-icons/hi";
+import React from 'react';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { HiOutlineMail } from 'react-icons/hi';
 
 const socials = [
-  {
-    icon: FaLinkedin,
-    href: "https://www.linkedin.com/in/chaitanya-puranik-27994b356/",
-    label: "LinkedIn",
-    color: "#0077B5",
-  },
-  {
-    icon: FaGithub,
-    href: "https://github.com/ChaitanyaP09",
-    label: "GitHub",
-    color: "#E6EDF3",
-  },
-  {
-    icon: HiOutlineMail,
-    href: "mailto:chaitanyapuranik9@gmail.com",
-    label: "Email",
-    color: "#EA4335",
-  },
+  { icon: FaLinkedin, href: "https://www.linkedin.com/in/chaitanya-puranik-27994b356/", label: "LinkedIn" },
+  { icon: FaGithub, href: "https://github.com/ChaitanyaP09", label: "GitHub" },
+  { icon: HiOutlineMail, href: "mailto:chaitanyapuranik9@gmail.com", label: "Email" },
 ];
-
-const navLinks = ["Home", "Skills", "Projects", "Contact"];
 
 const Footer = () => {
   return (
-    <footer id="contact" className="relative bg-gray-950 overflow-hidden">
-      {/* ambient glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-600/10 rounded-full blur-[120px]" />
+    <footer id="contact" className="relative bg-[#04060f] font-['DM_Sans',sans-serif]">
+      {/* Subtle structural border */}
+      <div className="w-[90%] max-w-7xl mx-auto px-6">
+        <div className="h-px bg-white/[0.06]" />
       </div>
 
-      {/* top divider line */}
-      <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent" />
+      <div className="w-[90%] max-w-7xl mx-auto  pt-20 pb-12">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-6">
+          
+          {/* Left Block: Identity & Profile Sub-headline */}
+          <div className="space-y-3">
+            <h3 className="text-white font-['Syne',sans-serif] text-2xl font-extrabold tracking-tight">
+              Chaitanya Puranik
+            </h3>
+            <div className="text-white/40 text-xs sm:text-sm font-light tracking-wide flex flex-wrap items-center gap-x-2 gap-y-1">
+              <span>Software Developer</span>
+              <span className="text-white/20 font-extrabold">·</span>
+              <span>COEP Pune</span>
+              <span className="text-white/20 font-extrabold">·</span>
+              <span className="text-emerald-400/80 font-normal">Open to opportunities</span>
+            </div>
+          </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10">
-        {/* ── CTA block ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-14"
-        >
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Let's{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-              Connect
-            </span>
-          </h2>
-          <p className="mt-4 max-w-lg text-gray-400 text-lg mx-auto">
-            Got a project in mind, a question, or just want to say hi? I'm always open to
-            new conversations and opportunities.
-          </p>
-
-          {/* email CTA button */}
-          <motion.a
-            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(59,130,246,0.4)" }}
-            whileTap={{ scale: 0.95 }}
-            href="mailto:chaitanyapuranik9@gmail.com"
-            className="inline-flex items-center gap-2 mt-8 px-8 py-3.5 rounded-xl
-                       bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold
-                       shadow-lg shadow-blue-500/25 transition-all relative overflow-hidden group"
-          >
-            {/* shimmer */}
-            <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-            <HiOutlineMail className="w-5 h-5" />
-            <span className="relative">Say Hello</span>
-          </motion.a>
-        </motion.div>
-
-        {/* ── social icons ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          viewport={{ once: true }}
-          className="flex justify-center gap-5 mb-12"
-        >
-          {socials.map(({ icon: Icon, href, label, color }) => (
-            <motion.a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ y: -4, scale: 1.15 }}
-              className="p-3.5 rounded-xl bg-white/5 border border-white/10
-                         text-gray-400 hover:text-white transition-all duration-300
-                         hover:border-transparent hover:shadow-[0_0_25px_var(--glow)]"
-              style={{ "--glow": `${color}55` }}
-              aria-label={label}
-            >
-              <Icon className="w-5 h-5" />
-            </motion.a>
-          ))}
-        </motion.div>
-
-        {/* ── divider ── */}
-        <div className="h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent mb-8" />
-
-        {/* ── bottom row ── */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-          {/* nav links */}
-          <nav className="flex gap-6">
-            {navLinks.map((link) => (
+          {/* Right Block: Minimal Social Link Alignment */}
+          <div className="flex items-center gap-8 pt-2">
+            {socials.map(({ icon: Icon, href, label }) => (
               <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                className="hover:text-white transition-colors duration-200"
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm font-light text-white/40 hover:text-white transition-colors duration-200 cursor-none"
+                data-hover
               >
-                {link}
+                <Icon className="w-4 h-4" />
+                <span className="tracking-wide">{label}</span>
               </a>
             ))}
-          </nav>
+          </div>
 
-          {/* copyright */}
-          <p className="flex items-center gap-1.5">
-            © {new Date().getFullYear()} Chaitanya Puranik · Made with
-            <motion.span
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-            >
-              <FaHeart className="w-3.5 h-3.5 text-red-500" />
-            </motion.span>
-            using React & Tailwind
-          </p>
+        </div>
+
+        {/* Bottom Metadata Copyright Row */}
+        <div className="mt-20 pt-6 border-t border-white/[0.04] flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-white/20 font-light tracking-wider">
+          <p>© {new Date().getFullYear()} Chaitanya P</p>
+          {/* <p>Built with React & Tailwind CSS</p> */}
         </div>
       </div>
     </footer>

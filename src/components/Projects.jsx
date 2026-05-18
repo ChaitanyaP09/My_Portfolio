@@ -1,189 +1,112 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const projects = [
   {
-    title: "Law Firm Website",
-    description:
-      "A modern, responsive law firm website designed to clearly present legal services, improve client reach, and ensure fast, reliable access across all devices.",
+    title: "Law Firm Platform",
+    year: "2024",
+    category: "Client-Focused Web Platform",
+    description: "A high-performance digital application designed for legal consultancy. Engineered with responsive design mechanics to streamline client engagement, optimize content discovery, and maximize cross-device speed efficiency.",
     tags: ["React", "Tailwind CSS", "JavaScript", "Responsive Design"],
-    github: "https://github.com/ChaitanyaP09/Verdict_.git",
-    live: null,
-    icon: "⚖️",
     color: "#3B82F6",
   },
   {
-    title: "Text Editor Using C",
-    description:
-      "A GUI-based text editor built in C using GTK, featuring custom data structures for text handling, efficient cursor navigation, and real-time editing.",
-    tags: ["C", "GTK", "Tries", "Data Structures"],
-    github: "https://github.com/SurajSonawane174/Text_editor.git",
-    live: null,
-    icon: "📝",
+    title: "Custom Text Editor",
+    year: "2024",
+    category: "Systems Programming Project",
+    description: "A low-level GUI text editor built in C leveraging the GTK framework. Integrated advanced memory-efficient data structures including Tries for prefix-based text operations, real-time cursor tracking, and buffered file input/output.",
+    tags: ["C", "GTK", "Tries", "Systems Programming"],
     color: "#8B5CF6",
   },
   {
-    title: "Movie Recommendation System",
-    description:
-      "A movie recommendation system built using machine learning and data science techniques, integrated into a web app for personalised suggestions in real time.",
-    tags: ["Machine Learning", "Python", "Data Science"],
-    github: "#",
-    live: null,
-    icon: "🎬",
-    color: "#EC4899",
+    title: "Comment Extraction Platform",
+    year: "2026",
+    category: "AI-Assisted Workflow System",
+    description: "Engineered an automation system for extracting, classifying, and managing engineering notes from annotated PDF drawings. Built a parsing pipeline using Python, PyMuPDF, and Gemini for structured JSON outputs, backed by a secure React dashboard and PostgreSQL management.",
+    tags: ["React", "Python", "PostgreSQL", "Gemini API", "PyMuPDF"],
+    color: "#10B981",
   },
 ];
 
-/* ── variants ── */
 const containerV = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
 };
 const cardV = {
-  hidden: { y: 50, opacity: 0 },
+  hidden: { y: 30, opacity: 0 },
   visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 80, damping: 14 } },
 };
 
-const Projects = () => {
-  const [hoveredIdx, setHoveredIdx] = useState(null);
-
+export default function Projects() {
   return (
-    <section id="projects" className="relative py-24 bg-gray-950 overflow-hidden">
-      {/* ambient blobs */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[140px]" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[120px]" />
-      </div>
+    <section id="projects" className="relative py-32 bg-[#04060f] overflow-hidden scroll-mt-24">
+      <style>{`
+        .projects-container {
+          width: 90%;
+          max-width: 80rem;
+          margin: 0 auto;
+        }
+        .proj-heading {
+          font-family: 'Syne', sans-serif;
+          font-size: clamp(38px, 4.8vw, 62px);
+          font-weight: 800;
+          color: #fff;
+          line-height: 1.1;
+          letter-spacing: -0.03em;
+          margin-bottom: 56px;
+        }
+        .proj-heading span {
+          background: linear-gradient(135deg, #60a5fa, #a78bfa);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      `}</style>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Featured{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-              Projects
-            </span>
-          </h2>
-          <p className="mt-4 max-w-2xl text-lg text-gray-400 mx-auto">
-            Selected work focused on clarity, performance, and execution.
-          </p>
-        </motion.div>
+      <div className="projects-container">
+        <h2 className="proj-heading">
+          Featured <span>Work</span>
+        </h2>
 
-        {/* cards grid */}
         <motion.div
           variants={containerV}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.05 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {projects.map((project, index) => (
             <motion.div
               key={index}
               variants={cardV}
-              onMouseEnter={() => setHoveredIdx(index)}
-              onMouseLeave={() => setHoveredIdx(null)}
-              whileHover={{ y: -12 }}
-              className="group relative rounded-2xl bg-white/[0.03] backdrop-blur-md
-                         border border-white/10 overflow-hidden flex flex-col h-full
-                         hover:border-white/20 transition-all duration-500"
+              whileHover={{ y: -8 }}
+              className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-500 hover:border-white/20"
             >
-              {/* top accent glow */}
-              <div
-                className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{
-                  background: `linear-gradient(90deg, transparent, ${project.color}, transparent)`,
-                }}
-              />
-
-              {/* corner glow blob */}
-              <AnimatePresence>
-                {hoveredIdx === index && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.15 }}
-                    exit={{ opacity: 0 }}
-                    className="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl"
-                    style={{ backgroundColor: project.color }}
-                  />
-                )}
-              </AnimatePresence>
-
-              <div className="relative p-8 flex-grow">
-                {/* icon + title row */}
-                <div className="flex items-center gap-3 mb-4">
-                  <span
-                    className="flex items-center justify-center w-12 h-12 rounded-xl text-2xl
-                               bg-white/5 border border-white/10 group-hover:scale-110
-                               group-hover:shadow-[0_0_20px_var(--glow)] transition-all duration-300"
-                    style={{ "--glow": `${project.color}66` }}
-                  >
-                    {project.icon}
-                  </span>
-                  <h3 className="text-xl font-bold text-white group-hover:text-transparent
-                                 group-hover:bg-clip-text group-hover:bg-gradient-to-r
-                                 group-hover:from-white group-hover:to-gray-300 transition-all">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(96,165,250,0.1),transparent_40%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                   style={{ background: `linear-gradient(90deg, transparent, ${project.color}, transparent)` }} />
+              <div className="relative p-8 flex-grow flex flex-col justify-between">
+                <div>
+                  <div className="mb-6 flex items-center justify-between text-[11px] uppercase tracking-[0.22em] text-white/35 font-medium">
+                    <span>0{index + 1}</span>
+                    <span className="text-white/45 bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-md">{project.year}</span>
+                  </div>
+                  <h3 className="font-['DM_Sans',sans-serif] text-xl font-bold text-white mb-4 tracking-tight">
                     {project.title}
                   </h3>
+                  <p className="text-white/55 font-light leading-relaxed mb-6 text-sm">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {project.tags.map((tag, tagIdx) => (
+                      <span key={tagIdx} className="px-2.5 py-1 rounded-full text-xs font-light bg-white/5 text-white/70 border border-white/10">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-
-                <p className="text-gray-400 leading-relaxed mb-6 text-sm">
-                  {project.description}
-                </p>
-
-                {/* tags */}
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIdx) => (
-                    <span
-                      key={tagIdx}
-                      className="px-3 py-1 rounded-lg text-xs font-medium
-                                 bg-white/5 text-gray-300 border border-white/10
-                                 group-hover:border-white/20 transition-colors"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div className="pt-4 border-t border-white/5 text-[11px] uppercase tracking-[0.18em] text-white/30 font-medium">
+                  <span>{project.category}</span>
                 </div>
-              </div>
-
-              {/* footer links */}
-              <div className="px-8 py-4 border-t border-white/5 bg-white/[0.02] flex items-center gap-4">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-gray-400 font-medium
-                             hover:text-white transition-colors group/link"
-                >
-                  <FaGithub className="w-4 h-4" />
-                  <span>Source Code</span>
-                  <motion.span
-                    className="inline-block"
-                    whileHover={{ x: 3 }}
-                  >
-                    →
-                  </motion.span>
-                </a>
-
-                {project.live && (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm font-medium transition-colors"
-                    style={{ color: project.color }}
-                  >
-                    <FaExternalLinkAlt className="w-3 h-3" />
-                    <span>Live Demo</span>
-                  </a>
-                )}
               </div>
             </motion.div>
           ))}
@@ -191,6 +114,4 @@ const Projects = () => {
       </div>
     </section>
   );
-};
-
-export default Projects;
+}
