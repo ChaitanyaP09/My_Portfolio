@@ -368,7 +368,7 @@ export default function Hero() {
           {/* ── Asymmetric Layout Grid ── */}
           <div
             ref={heroContentRef}
-            className="relative z-10 max-w-7xl w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+            className="relative z-10 max-w-7xl w-[85%] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
             style={{ willChange: "transform" }}
           >
             

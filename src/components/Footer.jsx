@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <footer id="contact" className="relative bg-[#04060f] font-['DM_Sans',sans-serif]">
       {/* Subtle structural border */}
-      <div className="w-[90%] max-w-7xl mx-auto px-6">
+      <div className="w-[85%] max-w-7xl mx-auto px-6">
         <div className="h-px bg-white/[0.06]" />
       </div>
 
